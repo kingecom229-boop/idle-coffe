@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Idle Coffee ☕ — Construis ton empire du café</title>
+<title>Idle Coffee Business ☕ — Dirige ton vrai business de café</title>
 <link rel="icon" type="image/png" href="assets/logo.png" />
 <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,23 +16,23 @@
     <div class="brand">
       <img src="assets/logo.png" alt="Idle Coffee" class="brand-logo" />
       <div class="brand-text">
-        <h1>Idle Coffee</h1>
-        <span class="brand-sub">Construis ton empire du café</span>
+        <h1>Idle Coffee Business</h1>
+        <span class="brand-sub">Portefeuille, fournisseurs, ventes & investissements</span>
       </div>
     </div>
 
     <div class="stats">
       <div class="stat stat-main">
-        <span class="stat-value" id="coffeeCount">0</span>
-        <span class="stat-label">☕ tasses</span>
+        <span class="stat-value" id="cashValue">0 €</span>
+        <span class="stat-label">💶 Portefeuille</span>
       </div>
       <div class="stat">
-        <span class="stat-value" id="cpsValue">0</span>
-        <span class="stat-label">/ seconde</span>
+        <span class="stat-value" id="profitValue">+0 €/s</span>
+        <span class="stat-label">Profit net</span>
       </div>
       <div class="stat">
-        <span class="stat-value" id="cpcValue">1</span>
-        <span class="stat-label">/ clic</span>
+        <span class="stat-value" id="clickValue">0 €</span>
+        <span class="stat-label">/ vente éclair</span>
       </div>
     </div>
 
@@ -43,17 +43,30 @@
     </div>
   </header>
 
+  <div class="resource-bars">
+    <div class="resource">
+      <div class="resource-label">🫘 Grains en stock <span id="beansText">0 / 0</span></div>
+      <div class="resource-bar"><div id="beansBarFill" class="resource-fill beans"></div></div>
+      <div class="resource-sub">Production : <span id="prodRateValue">0 ☕/s</span></div>
+    </div>
+    <div class="resource">
+      <div class="resource-label">☕ Cafés en stock <span id="cupsText">0 / 0</span></div>
+      <div class="resource-bar"><div id="cupsBarFill" class="resource-fill cups"></div></div>
+      <div class="resource-sub">Ventes : <span id="salesRateValue">0 ☕/s</span></div>
+    </div>
+  </div>
+
   <main class="main">
 
     <!-- CLICKER ZONE -->
     <section class="clicker-zone">
       <div class="cup-wrap">
-        <button id="cupButton" class="cup-button" aria-label="Préparer un café">
+        <button id="cupButton" class="cup-button" aria-label="Vente éclair">
           <img src="assets/logo.png" alt="Tasse de café" id="cupImg" />
         </button>
         <div id="floaters" class="floaters"></div>
       </div>
-      <p class="clicker-hint">Clique sur la tasse pour préparer du café !</p>
+      <p class="clicker-hint">Clique pour faire une <b>Vente Éclair</b> et encaisser directement !</p>
 
       <div class="golden-spot">
         <div id="goldenBean" class="golden-bean hidden" title="Grain doré !">🫘</div>
@@ -63,7 +76,10 @@
     <!-- PANEL -->
     <section class="panel">
       <nav class="tabs">
-        <button class="tab-btn active" data-tab="shop">🏪 Production</button>
+        <button class="tab-btn active" data-tab="production">☕ Production</button>
+        <button class="tab-btn" data-tab="sales">🛒 Ventes</button>
+        <button class="tab-btn" data-tab="suppliers">📦 Fournisseurs</button>
+        <button class="tab-btn" data-tab="invest">📈 Investir</button>
         <button class="tab-btn" data-tab="upgrades">⚡ Améliorations</button>
         <button class="tab-btn" data-tab="prestige">🏆 Prestige</button>
         <button class="tab-btn" data-tab="stats">📊 Stats</button>
@@ -77,8 +93,24 @@
         <button class="buy-amt-btn" data-amt="max">Max</button>
       </div>
 
-      <div class="tab-content active" id="tab-shop">
-        <div id="producerList" class="producer-list"></div>
+      <div class="tab-content active" id="tab-production">
+        <p class="tab-intro">Embauche du personnel et des machines pour <b>préparer</b> du café à partir de tes grains en stock.</p>
+        <div id="productionList" class="producer-list"></div>
+      </div>
+
+      <div class="tab-content" id="tab-sales">
+        <p class="tab-intro">Automatise l'<b>encaissement</b> : ces unités vendent tes cafés en stock et transforment ta production en €.</p>
+        <div id="salesList" class="producer-list"></div>
+      </div>
+
+      <div class="tab-content" id="tab-suppliers">
+        <p class="tab-intro">Achète des <b>sacs de grains</b> chez tes fournisseurs pour alimenter ta production. De meilleurs fournisseurs se débloquent au fil de ta croissance.</p>
+        <div id="supplierList" class="producer-list"></div>
+      </div>
+
+      <div class="tab-content" id="tab-invest">
+        <p class="tab-intro">Diversifie ton business : ces <b>investissements</b> rapportent des € en continu, indépendamment de tes ventes de café.</p>
+        <div id="investList" class="producer-list"></div>
       </div>
 
       <div class="tab-content" id="tab-upgrades">
@@ -88,10 +120,10 @@
       <div class="tab-content" id="tab-prestige">
         <div class="prestige-box">
           <h2>🏆 Torréfaction Légendaire</h2>
-          <p>Réinitialise ta progression (tasses, producteurs, améliorations non-permanentes) contre des <b>Grains Dorés</b> qui boostent ta production <b>pour toujours</b>, même après un nouveau reset.</p>
+          <p>Réinitialise ton business (portefeuille, stocks, personnel, investissements, améliorations non-permanentes) contre des <b>Grains Dorés</b> qui boostent ta production et tes ventes <b>pour toujours</b>, même après un nouveau reset.</p>
           <div class="prestige-stats">
             <div>Grains dorés actuels : <b id="prestigeCurrent">0</b></div>
-            <div>Bonus de production : <b id="prestigeBonus">+0%</b></div>
+            <div>Bonus de production/ventes : <b id="prestigeBonus">+0%</b></div>
             <div>Grains dorés gagnés si tu prestiges maintenant : <b id="prestigeGain">0</b></div>
           </div>
           <button id="doPrestigeBtn" class="big-btn">Faire une Torréfaction Légendaire</button>
@@ -100,9 +132,13 @@
 
       <div class="tab-content" id="tab-stats">
         <div class="stats-box">
-          <div class="stats-row"><span>Total de tasses préparées</span><b id="statTotal">0</b></div>
-          <div class="stats-row"><span>Tasses par clic manuel</span><b id="statTotalClicks">0</b></div>
-          <div class="stats-row"><span>Clics effectués</span><b id="statClicks">0</b></div>
+          <div class="stats-row"><span>Revenus cumulés (lifetime)</span><b id="statLifetime">0 €</b></div>
+          <div class="stats-row"><span>Gagné via Ventes Éclair</span><b id="statClickCash">0 €</b></div>
+          <div class="stats-row"><span>Revenus des ventes automatisées</span><b id="statSalesRevenue">0 €</b></div>
+          <div class="stats-row"><span>Revenus des investissements</span><b id="statInvestRevenue">0 €</b></div>
+          <div class="stats-row"><span>Dépenses (loyer + salaires)</span><b id="statExpenses">0 €/s</b></div>
+          <div class="stats-row"><span>Employés au total</span><b id="statStaff">0</b></div>
+          <div class="stats-row"><span>Vente Éclair effectuées</span><b id="statClicks">0</b></div>
           <div class="stats-row"><span>Grains dorés trouvés</span><b id="statGoldenFound">0</b></div>
           <div class="stats-row"><span>Temps de jeu</span><b id="statPlaytime">0s</b></div>
           <div class="stats-row"><span>Nombre de Prestiges</span><b id="statPrestiges">0</b></div>
@@ -112,7 +148,7 @@
   </main>
 
   <footer class="footer">
-    <span>Idle Coffee — sauvegarde automatique activée ✓</span>
+    <span>Idle Coffee Business — sauvegarde automatique activée ✓</span>
     <span id="saveIndicator" class="save-indicator"></span>
   </footer>
 </div>

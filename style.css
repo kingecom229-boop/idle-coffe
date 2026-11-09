@@ -93,6 +93,9 @@ html, body {
   color: var(--accent-light);
 }
 
+.stat-value.positive { color: var(--good); }
+.stat-value.negative { color: var(--danger); }
+
 .stat-label {
   font-size: 0.68rem;
   color: var(--cream-dim);
@@ -118,6 +121,62 @@ html, body {
 
 .icon-btn:hover { background: rgba(255,255,255,0.12); transform: translateY(-1px); }
 .icon-btn.danger:hover { background: rgba(192, 83, 62, 0.4); }
+
+/* ---------- RESOURCE BARS ---------- */
+.resource-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 10px 20px 0;
+}
+
+@media (max-width: 700px) {
+  .resource-bars { grid-template-columns: 1fr; }
+}
+
+.resource {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.resource-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  margin-bottom: 6px;
+}
+
+.resource-label span {
+  color: var(--cream);
+  font-weight: 700;
+}
+
+.resource-bar {
+  height: 8px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.resource-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.2s ease;
+}
+
+.resource-fill.beans { background: linear-gradient(90deg, #8a5a2e, #cf9a52); }
+.resource-fill.cups { background: linear-gradient(90deg, #6b4328, var(--accent)); }
+
+.resource-sub {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: var(--cream-dim);
+}
+
+.resource-sub span { color: var(--accent-light); font-weight: 700; }
 
 /* ---------- MAIN LAYOUT ---------- */
 .main {
@@ -243,19 +302,22 @@ html, body {
 
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid var(--card-border);
 }
 
 .tab-btn {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 90px;
   background: none;
   border: none;
   color: var(--cream-dim);
-  padding: 12px 6px;
+  padding: 10px 4px;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   border-bottom: 3px solid transparent;
   transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
 }
 
 .tab-btn:hover { color: var(--cream); }
@@ -301,6 +363,24 @@ html, body {
 }
 
 .tab-content.active { display: block; }
+
+.tab-intro {
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  margin: 2px 4px 12px;
+  line-height: 1.4;
+}
+
+.volatile-tag {
+  display: inline-block;
+  background: var(--danger);
+  color: var(--cream);
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
 
 /* producer / upgrade cards */
 .producer-card, .upgrade-card {

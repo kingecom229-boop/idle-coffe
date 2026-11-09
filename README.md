@@ -1,20 +1,20 @@
-# ☕ Idle Coffee
+# ☕ Idle Coffee Business
 
-Un jeu idle/clicker où tu construis ton empire du café : clique pour préparer des cafés, embauche des stagiaires, des baristas, des machines à expresso et jusqu'à des stations orbitales, débloque des améliorations, chasse le grain doré, et fais des Prestiges ("Torréfactions Légendaires") pour des bonus permanents.
+Un jeu idle où tu diriges un **vrai petit business de café**, avec un portefeuille en **euros (€)** :
 
-## Fonctionnalités
-
-- Clic pour gagner du café, avec animation et puissance évolutive.
-- 9 producteurs automatiques avec coûts croissants.
-- Améliorations de clic, améliorations globales et spécialisations par producteur (débloquées par paliers).
-- Grain doré aléatoire donnant un bonus de frénésie ou un gain instantané.
-- Système de Prestige permanent (grains dorés = +2% de production chacun).
-- Sauvegarde automatique locale (localStorage) + gains hors-ligne au retour.
-- Interface responsive, thème café chaleureux.
+- 🫘 **Achète des grains** chez des fournisseurs (du marché local jusqu'à l'achat direct en plantation).
+- 👩‍🍳 **Production** : embauche du personnel et des machines qui transforment les grains en cafés prêts à vendre.
+- 🛒 **Ventes automatisées** : des caissiers, caisses automatiques, applis de commande... qui encaissent tes clients tout seuls.
+- ⚡ **Vente Éclair** : clique pour encaisser une vente toi-même, à tout moment.
+- 📈 **Investissements** : place ton argent dans des actifs (livret, actions, immobilier, crypto du café...) qui rapportent des € en continu.
+- 💸 **Dépenses réelles** : loyer et salaires grignotent ton profit net, comme dans un vrai commerce.
+- 🫘 **Grain doré** aléatoire : frénésie de production/ventes ou gain instantané.
+- 🏆 **Prestige** ("Torréfaction Légendaire") : réinitialise ton business contre des bonus permanents.
+- 💾 Sauvegarde automatique locale + gains hors-ligne au retour.
 
 ## Lancer le jeu en local
 
-C'est un site statique pur (HTML/CSS/JS), sans dépendances ni build :
+Site statique pur (HTML/CSS/JS), sans dépendances ni build :
 
 ```bash
 python3 -m http.server 8080
