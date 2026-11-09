@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Idle Coffee ☕ — Construis ton empire du café</title>
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Idle Coffee" class="brand-logo" />
+      <div class="brand-text">
+        <h1>Idle Coffee</h1>
+        <span class="brand-sub">Construis ton empire du café</span>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat stat-main">
+        <span class="stat-value" id="coffeeCount">0</span>
+        <span class="stat-label">☕ tasses</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="cpsValue">0</span>
+        <span class="stat-label">/ seconde</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="cpcValue">1</span>
+        <span class="stat-label">/ clic</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="prestigeBtn" class="icon-btn" title="Prestige">🏆 <span id="prestigeLevel">0</span></button>
+      <button id="muteBtn" class="icon-btn" title="Son">🔊</button>
+      <button id="resetBtn" class="icon-btn danger" title="Réinitialiser">♻️</button>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- CLICKER ZONE -->
+    <section class="clicker-zone">
+      <div class="cup-wrap">
+        <button id="cupButton" class="cup-button" aria-label="Préparer un café">
+          <img src="assets/logo.png" alt="Tasse de café" id="cupImg" />
+        </button>
+        <div id="floaters" class="floaters"></div>
+      </div>
+      <p class="clicker-hint">Clique sur la tasse pour préparer du café !</p>
+
+      <div class="golden-spot">
+        <div id="goldenBean" class="golden-bean hidden" title="Grain doré !">🫘</div>
+      </div>
+    </section>
+
+    <!-- PANEL -->
+    <section class="panel">
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="shop">🏪 Production</button>
+        <button class="tab-btn" data-tab="upgrades">⚡ Améliorations</button>
+        <button class="tab-btn" data-tab="prestige">🏆 Prestige</button>
+        <button class="tab-btn" data-tab="stats">📊 Stats</button>
+      </nav>
+
+      <div class="buy-amount-row" id="buyAmountRow">
+        <span>Acheter :</span>
+        <button class="buy-amt-btn active" data-amt="1">x1</button>
+        <button class="buy-amt-btn" data-amt="10">x10</button>
+        <button class="buy-amt-btn" data-amt="100">x100</button>
+        <button class="buy-amt-btn" data-amt="max">Max</button>
+      </div>
+
+      <div class="tab-content active" id="tab-shop">
+        <div id="producerList" class="producer-list"></div>
+      </div>
+
+      <div class="tab-content" id="tab-upgrades">
+        <div id="upgradeList" class="upgrade-list"></div>
+      </div>
+
+      <div class="tab-content" id="tab-prestige">
+        <div class="prestige-box">
+          <h2>🏆 Torréfaction Légendaire</h2>
+          <p>Réinitialise ta progression (tasses, producteurs, améliorations non-permanentes) contre des <b>Grains Dorés</b> qui boostent ta production <b>pour toujours</b>, même après un nouveau reset.</p>
+          <div class="prestige-stats">
+            <div>Grains dorés actuels : <b id="prestigeCurrent">0</b></div>
+            <div>Bonus de production : <b id="prestigeBonus">+0%</b></div>
+            <div>Grains dorés gagnés si tu prestiges maintenant : <b id="prestigeGain">0</b></div>
+          </div>
+          <button id="doPrestigeBtn" class="big-btn">Faire une Torréfaction Légendaire</button>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-stats">
+        <div class="stats-box">
+          <div class="stats-row"><span>Total de tasses préparées</span><b id="statTotal">0</b></div>
+          <div class="stats-row"><span>Tasses par clic manuel</span><b id="statTotalClicks">0</b></div>
+          <div class="stats-row"><span>Clics effectués</span><b id="statClicks">0</b></div>
+          <div class="stats-row"><span>Grains dorés trouvés</span><b id="statGoldenFound">0</b></div>
+          <div class="stats-row"><span>Temps de jeu</span><b id="statPlaytime">0s</b></div>
+          <div class="stats-row"><span>Nombre de Prestiges</span><b id="statPrestiges">0</b></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Idle Coffee — sauvegarde automatique activée ✓</span>
+    <span id="saveIndicator" class="save-indicator"></span>
+  </footer>
+</div>
+
+<div id="offlineModal" class="modal hidden">
+  <div class="modal-box">
+    <h2>☕ Bon retour !</h2>
+    <p id="offlineText"></p>
+    <button id="offlineCloseBtn" class="big-btn">Récupérer</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
